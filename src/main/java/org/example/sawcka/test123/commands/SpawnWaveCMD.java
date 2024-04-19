@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.example.sawcka.test123.EnemyWave;
+import org.example.sawcka.test123.SoundsVisualEffects;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class SpawnWaveCMD implements CommandExecutor, TabCompleter {
 
 
             EnemyWave.spawnEnemies(player.getWorld(), location, radius, difficulty);
+
 
 
         } catch (IndexOutOfBoundsException ignored) {

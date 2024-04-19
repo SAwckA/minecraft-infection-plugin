@@ -28,6 +28,8 @@ public class SpawnHealerCMD implements CommandExecutor, TabCompleter {
         double y = 0;
         double z = 0;
         boolean isAi = true;
+        int expReward = 100000;
+
 
         try {
             maxTrades = Integer.parseInt(args[0]);
@@ -46,6 +48,11 @@ public class SpawnHealerCMD implements CommandExecutor, TabCompleter {
             isAi = Boolean.parseBoolean(args[4]);
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException ignored) {}
 
+        try  {
+            expReward = Integer.parseInt(args[5]);
+        }
+        catch (ArrayIndexOutOfBoundsException | NumberFormatException ignored) {}
+
         Location location = player.getLocation();
         if (!(x == 0 && y == 0 && z == 0)) {
             location = new Location(player.getWorld(), x, y, z);
@@ -56,7 +63,8 @@ public class SpawnHealerCMD implements CommandExecutor, TabCompleter {
                 location,
                 ingredientMaterial,
                 maxTrades,
-                isAi
+                isAi,
+                expReward
         );
 
         commandSender.sendMessage("villager spawned at " + player.getLocation().toString());
@@ -82,6 +90,13 @@ public class SpawnHealerCMD implements CommandExecutor, TabCompleter {
                     "true",
                     "false",
                     "<has_ai>"
+            );
+        }
+        if (strings.length == 6) {
+            return List.of(
+                    "0",
+                    "1000000",
+                    "<exp_reward>"
             );
         }
 

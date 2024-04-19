@@ -16,7 +16,7 @@ commands:
 
   healer:
     description: "Заспавнить жителя с лекарством"
-    usage: /healer <max_trades> <x> <y> <z> <is_ai:true|false>
+    usage: /healer <max_trades> <x> <y> <z> <is_ai:true|false> <exp_reward>
     permission: op
 
   infect:

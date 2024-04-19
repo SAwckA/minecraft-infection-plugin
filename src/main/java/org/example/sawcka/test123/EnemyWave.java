@@ -28,8 +28,9 @@ public class EnemyWave {
 
             double py = world.getHighestBlockYAt(new Location(world, px, location.getY(), pz)) + 1;
 
-            spawnByWave(world, new Location(world, px, py, pz), difficulty);
-
+            Location spawnLocation = new Location(world, px, py, pz);
+            spawnByWave(world, spawnLocation, difficulty);
+            SoundsVisualEffects.spawnEffect(world, spawnLocation);
             angle += dt;
         }
 
