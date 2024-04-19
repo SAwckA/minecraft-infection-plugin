@@ -13,8 +13,9 @@ import java.util.ArrayList;
 
 public class ListInfected implements Serializable {
 
-    private static final int durationToChangeStage = 10;
+    public static int durationToChangeStage = 60 * 60 * 2;
     private static final double chanceToInfect = 0.25;
+    private static final double sneezeChance = 0.01;
 
     public static class InfectedPlayer implements Serializable {
         public int duration;
@@ -153,9 +154,9 @@ public class ListInfected implements Serializable {
     private void updateDuration(InfectedPlayer infectedPlayer) {
         infectedPlayer.duration++;
 
+        apply(infectedPlayer);
         if (infectedPlayer.duration >= durationToChangeStage) {
             nextStage(infectedPlayer);
-            apply(infectedPlayer);
         }
     }
 
@@ -165,6 +166,9 @@ public class ListInfected implements Serializable {
             if (player != null) {
                 if (player.hasPotionEffect(PotionEffectType.LUCK)) {
                     continue;
+                }
+                if (Math.random() <= sneezeChance) {
+                    SoundsVisualEffects.sneeze(player);
                 }
                 updateDuration(infectedPlayer);
             }

@@ -44,6 +44,6 @@ public class ToggleInfiniteWeatherCMD implements CommandExecutor, TabCompleter {
             return List.of("rain", "thunder");
         }
 
-        return null;
+        return List.of();
     }
 }

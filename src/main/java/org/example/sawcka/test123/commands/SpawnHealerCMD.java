@@ -14,7 +14,6 @@ import org.example.sawcka.test123.Healer;
 import java.util.List;
 
 public class SpawnHealerCMD implements CommandExecutor, TabCompleter {
-    private final Material ingredientMaterial = Material.DIAMOND;
     private final int ingredientAmount = 1;
     private final int maxUses = 1;
 
@@ -61,7 +60,6 @@ public class SpawnHealerCMD implements CommandExecutor, TabCompleter {
         Healer.createHealer(
                 player.getWorld(),
                 location,
-                ingredientMaterial,
                 maxTrades,
                 isAi,
                 expReward
@@ -100,6 +98,6 @@ public class SpawnHealerCMD implements CommandExecutor, TabCompleter {
             );
         }
 
-        return null;
+        return List.of();
     }
 }

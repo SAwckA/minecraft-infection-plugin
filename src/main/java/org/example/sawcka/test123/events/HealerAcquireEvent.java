@@ -27,13 +27,8 @@ public class HealerAcquireEvent implements Listener {
             ItemStack drug = Drug.getDrug();
             if (villager.getRecipes().get(0).getResult().equals(drug)) {
                 SoundsVisualEffects.healerDeath(villager);
-
                 villager.damage(villager.getHealth());
-
             }
-
-
-
         }
     }
 }

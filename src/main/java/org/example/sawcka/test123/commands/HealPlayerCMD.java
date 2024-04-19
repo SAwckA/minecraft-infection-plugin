@@ -29,6 +29,6 @@ public class HealPlayerCMD implements CommandExecutor, TabCompleter {
         if (strings.length == 1) {
             return Bukkit.getOnlinePlayers().stream().map(Player::getName).toList();
         }
-        return null;
+        return List.of();
     }
 }

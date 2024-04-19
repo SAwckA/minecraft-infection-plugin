@@ -36,8 +36,6 @@ public class SpawnWaveCMD implements CommandExecutor, TabCompleter {
 
             commandSender.sendMessage("Spawning wave " + difficulty + " difficulty");
 
-
-
             EnemyWave.spawnEnemies(player.getWorld(), location, radius, difficulty);
 
 
@@ -45,8 +43,6 @@ public class SpawnWaveCMD implements CommandExecutor, TabCompleter {
         } catch (IndexOutOfBoundsException ignored) {
 
         }
-
-
         return true;
     }
 
@@ -65,6 +61,6 @@ public class SpawnWaveCMD implements CommandExecutor, TabCompleter {
             return List.of("0", "1", "2", "3", "<difficulty>");
         }
 
-        return null;
+        return List.of();
     }
 }

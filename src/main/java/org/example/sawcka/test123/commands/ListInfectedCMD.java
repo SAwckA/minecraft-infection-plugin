@@ -33,6 +33,6 @@ public class ListInfectedCMD implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-        return null;
+        return List.of();
     }
 }

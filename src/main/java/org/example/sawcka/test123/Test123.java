@@ -38,10 +38,6 @@ public final class Test123 extends JavaPlugin {
         getCommand("list_infected").setExecutor(listInfectedCMD);
         getCommand("list_infected").setTabCompleter(listInfectedCMD);
 
-        HealPlayerCMD healPlayerCMD = new HealPlayerCMD();
-        getCommand("heal").setExecutor(healPlayerCMD);
-        getCommand("heal").setTabCompleter(healPlayerCMD);
-
         SetStageCMD setStageCMD = new SetStageCMD();
         getCommand("set_stage").setExecutor(setStageCMD);
         getCommand("set_stage").setTabCompleter(setStageCMD);
@@ -66,6 +62,18 @@ public final class Test123 extends JavaPlugin {
         getCommand("toggle_explode_creeper").setExecutor(toggleExplodeCreeper);
         getCommand("toggle_explode_creeper").setTabCompleter(toggleExplodeCreeper);
 
+        WaveDelayedCMD waveDelayedCMD = new WaveDelayedCMD();
+        getCommand("wave_delayed").setExecutor(waveDelayedCMD);
+        getCommand("wave_delayed").setTabCompleter(waveDelayedCMD);
+
+        ToggleHealerAutoSpawnCMD toggleHealerAutoSpawnCMD = new ToggleHealerAutoSpawnCMD();
+        getCommand("toggle_healer_auto_spawn").setExecutor(toggleHealerAutoSpawnCMD);
+        getCommand("toggle_healer_auto_spawn").setTabCompleter(toggleHealerAutoSpawnCMD);
+
+        SetInfectionDurationCMD setInfectionDurationCMD = new SetInfectionDurationCMD();
+        getCommand("set_infection_duration").setExecutor(setInfectionDurationCMD);
+        getCommand("set_infection_duration").setTabCompleter(setInfectionDurationCMD);
+
         try {
             listInfected = ListInfected.instantiate();
         } catch (FileNotFoundException e) {
@@ -89,7 +97,8 @@ public final class Test123 extends JavaPlugin {
         Infection infection = new Infection();
 
         BukkitTask task = server.getScheduler().runTaskTimer(this, infection::update, delay, period);
-        BukkitTask updateDurationTask = server.getScheduler().runTaskTimer(this, listInfected::updateAllDuration, delay, period);
+        BukkitTask updateDurationTask = server.getScheduler().runTaskTimer(this, listInfected::updateAllDuration, delay, 20);
+        BukkitTask spawnHealerOnSpawn = server.getScheduler().runTaskTimer(this, Healer::spawnTemporaryVillager, delay, 20 * 60 * 20);
     }
 
     @Override

@@ -29,11 +29,6 @@ commands:
     usage: /list_infected
     permission: op
 
-  heal:
-    description: "Использовать лекарство на игроке"
-    usage: /heal <player>
-    permission: op
-
   remove_infection:
     description: "Убрать заражение игрока"
     usage: /remove_infection <player>
@@ -62,4 +57,19 @@ commands:
   toggle_explode_creeper:
     description: "Включить/выключить подрыв криперов при ударе"
     usage: /toggle_explode_creeper
+    permission: op
+
+  wave_delayed:
+    description: "Уведомление волны"
+    usage: /wave_notify <x> <y> <z> <radius> <difficulty> <timeout:minutes>
+    permission: op
+
+  toggle_healer_auto_spawn:
+    description: "Включить/выключить автоматический спавн жителя с 1 трейдом"
+    usage: /toggle_healer_auto_spawn
+    permission: op
+
+  set_infection_duration:
+    description: "Установить длительность стадии"
+    usage: /set_infection_duration duration
     permission: op

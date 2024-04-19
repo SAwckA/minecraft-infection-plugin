@@ -36,6 +36,6 @@ public class SetStageCMD implements CommandExecutor, TabCompleter {
         if (strings.length == 2) {
             return List.of("1", "2", "3");
         }
-        return null;
+        return List.of();
     }
 }

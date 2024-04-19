@@ -22,6 +22,15 @@ public class EnemyWave {
         double angle = 0;
         double dt = 0.1;
 
+        boolean isBegin = true;
+
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            Location playerLocation = player.getLocation();
+            playerLocation.setY(world.getHighestBlockYAt(playerLocation) + 15);
+            spawnAllPhantoms(world, playerLocation, difficulty);
+        }
+
+
         while (angle <= 2*Math.PI) {
             double px = location.getX() + radius * Math.cos(angle);
             double pz = location.getZ() + radius * Math.sin(angle);
@@ -30,6 +39,11 @@ public class EnemyWave {
             angle += dt;
 
             Location spawnLocation = new Location(world, px, py, pz);
+
+            if (isBegin) {
+                SoundsVisualEffects.beginWave(world, spawnLocation);
+                isBegin = false;
+            }
 
             Bukkit.getServer().getScheduler().runTaskLater(Test123.getProvidingPlugin(Test123.class), () -> {
                 spawnByWave(world, spawnLocation, difficulty);
@@ -65,6 +79,8 @@ public class EnemyWave {
 
     private static void spawnZombie(World world, Location location, int difficulty) {
         Zombie zombie = (Zombie) world.spawnEntity(location, EntityType.ZOMBIE);
+
+        zombie.setTarget(Healer.getMainVillager());
 
         ItemStack mainHand = null;
         ItemStack helmet = null;
@@ -106,6 +122,7 @@ public class EnemyWave {
     private static void spawnSkeleton(World world, Location location, int difficulty) {
         Skeleton skeleton = (Skeleton) world.spawnEntity(location, EntityType.SKELETON);
 
+        skeleton.setTarget(Healer.getMainVillager());
         ItemStack mainHand = new ItemStack(Material.BOW);
         mainHand.addEnchantment(Enchantment.ARROW_DAMAGE, difficulty + 1);
 
@@ -114,11 +131,14 @@ public class EnemyWave {
 
     private static void spawnCreeper(World world, Location location, int difficulty) {
         Creeper creeper = (Creeper) world.spawnEntity(location, EntityType.CREEPER);
+        creeper.setTarget(Healer.getMainVillager());
         creeper.setExplosionRadius(3 + difficulty);
     }
 
     private static void spawnSpider(World world, Location location, int difficulty) {
         Spider spider = (Spider) world.spawnEntity(location, EntityType.SPIDER);
+
+        spider.setTarget(Healer.getMainVillager());
 
         if (difficulty == 1) {
             spider.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 0));
@@ -131,5 +151,13 @@ public class EnemyWave {
         if (difficulty == 3) {
             spider.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, -1, 0));
         }
+    }
+
+    private static void spawnAllPhantoms(World world, Location location, int difficulty) {
+
+        for (int i = 0; i <= difficulty; i++) {
+            Phantom phantom = (Phantom) world.spawnEntity(location, EntityType.PHANTOM);
+        }
+
     }
 }

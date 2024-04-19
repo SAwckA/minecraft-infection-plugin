@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Infection {
 
-    private final double radius = 10;
+    private final double radius = 6;
 
     public void update() {
 

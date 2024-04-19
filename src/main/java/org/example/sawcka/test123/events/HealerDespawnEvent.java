@@ -21,10 +21,6 @@ public class HealerDespawnEvent implements Listener {
             try {
                 Merchant villager = merchantInventory.getMerchant();
 
-                Bukkit.getLogger().info(villager.getRecipes().get(0).getResult().toString());
-
-
-
             } catch (ClassCastException ignored) {
             }
         }
