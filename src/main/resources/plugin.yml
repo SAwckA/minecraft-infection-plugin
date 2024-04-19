@@ -1,6 +1,6 @@
-name: test123
+name: InfectionGame
 version: '${project.version}'
-main: org.example.sawcka.test123.Test123
+main: org.example.sawcka.InfectionGame.InfectionGame
 api-version: '1.20'
 
 commands:
