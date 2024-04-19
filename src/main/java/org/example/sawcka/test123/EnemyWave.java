@@ -25,13 +25,17 @@ public class EnemyWave {
         while (angle <= 2*Math.PI) {
             double px = location.getX() + radius * Math.cos(angle);
             double pz = location.getZ() + radius * Math.sin(angle);
-
             double py = world.getHighestBlockYAt(new Location(world, px, location.getY(), pz)) + 1;
 
-            Location spawnLocation = new Location(world, px, py, pz);
-            spawnByWave(world, spawnLocation, difficulty);
-            SoundsVisualEffects.spawnEffect(world, spawnLocation);
             angle += dt;
+
+            Location spawnLocation = new Location(world, px, py, pz);
+
+            Bukkit.getServer().getScheduler().runTaskLater(Test123.getProvidingPlugin(Test123.class), () -> {
+                spawnByWave(world, spawnLocation, difficulty);
+                SoundsVisualEffects.spawnEffect(world, spawnLocation);
+            }, (long)(20 * angle * 1));
+
         }
 
         return enemies;
