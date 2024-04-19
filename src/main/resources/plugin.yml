@@ -1,0 +1,65 @@
+name: test123
+version: '${project.version}'
+main: org.example.sawcka.test123.Test123
+api-version: '1.20'
+
+commands:
+  test:
+    usage: /test
+    permission: op
+
+
+  drug:
+    description: "Выдать лекарство себе"
+    usage: /drug
+    permission: op
+
+  healer:
+    description: "Заспавнить жителя с лекарством"
+    usage: /healer <max_trades> <x> <y> <z> <is_ai:true|false>
+    permission: op
+
+  infect:
+    description: "Заразить игрока"
+    usage: /infect <player>
+    permission: op
+
+  list_infected:
+    description: "Список зараженных игроков"
+    usage: /list_infected
+    permission: op
+
+  heal:
+    description: "Использовать лекарство на игроке"
+    usage: /heal <player>
+    permission: op
+
+  remove_infection:
+    description: "Убрать заражение игрока"
+    usage: /remove_infection <player>
+    permission: op
+
+  set_stage:
+    description: "Установить текущую стадию болезни"
+    usage: /set_stage <player> <stage>
+    permission: op
+
+  spawn_wave:
+    description: "Заспавнить волну врагов в радиусе от точки <x> <y> <z>"
+    usage: /spawn_wave <x> <y> <z> <radius> <difficulty>
+    permission: op
+
+  toggle_infinite_weather:
+    description: "Включить/выключить бесконечную погоду"
+    usage: /toggle_infinite_weather <rain|thunder>
+    permission: op
+
+  toggle_portal_blackout:
+    description: "Включить/выключить ломание порталов"
+    usage: /toggle_portal_blackout
+    permission: op
+
+  toggle_explode_creeper:
+    description: "Включить/выключить подрыв криперов при ударе"
+    usage: /toggle_explode_creeper
+    permission: op

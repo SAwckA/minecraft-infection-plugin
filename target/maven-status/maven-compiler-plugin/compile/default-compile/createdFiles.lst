@@ -1,0 +1,15 @@
+org\example\sawcka\test123\commands\ListInfectedCMD.class
+org\example\sawcka\test123\ListInfected$InfectedPlayer.class
+org\example\sawcka\test123\commands\SpawnHealer.class
+org\example\sawcka\test123\commands\InfectCMD.class
+org\example\sawcka\test123\events\RespawnEvent.class
+org\example\sawcka\test123\Test123.class
+org\example\sawcka\test123\commands\TestCommand.class
+org\example\sawcka\test123\events\ConsumingEvent.class
+org\example\sawcka\test123\ListInfected.class
+org\example\sawcka\test123\Infection.class
+org\example\sawcka\test123\commands\SetStage.class
+org\example\sawcka\test123\Healer.class
+org\example\sawcka\test123\Drug.class
+org\example\sawcka\test123\commands\GetDrug.class
+org\example\sawcka\test123\commands\HealPlayerCMD.class
