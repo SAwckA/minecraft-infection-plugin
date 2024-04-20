@@ -88,6 +88,7 @@ public final class InfectionGame extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(toggleExplodeCreeper, this);
         Bukkit.getPluginManager().registerEvents(new HealerDespawnEvent(), this);
         Bukkit.getPluginManager().registerEvents(new HealerAcquireEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new TemporaryVillagerDieEvent(), this);
         Bukkit.getLogger().info("Enabled");
 
         Server server = Bukkit.getServer();
@@ -98,13 +99,15 @@ public final class InfectionGame extends JavaPlugin {
 
         BukkitTask task = server.getScheduler().runTaskTimer(this, infection::update, delay, period);
         BukkitTask updateDurationTask = server.getScheduler().runTaskTimer(this, listInfected::updateAllDuration, delay, 20);
-        BukkitTask spawnHealerOnSpawn = server.getScheduler().runTaskTimer(this, Healer::spawnTemporaryVillager, delay, 20 * 60 * 20);
+        BukkitTask spawnHealerOnSpawn = server.getScheduler().runTaskTimer(this, Healer::spawnTemporaryVillager, delay, 10 * 20);
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         Bukkit.getLogger().info("Stopping");
+
+        Bukkit.getLogger().info("Killing temporary villager");
 
         try {
             listInfected.save();

@@ -19,21 +19,29 @@ public class Healer {
     private static final Material ingredientMaterial = Material.DIAMOND;
     private static final int ingredientAmount = 4;
     private static Villager mainVillager = null;
-    private static Villager temporaryVillager = null;
+    public static boolean isTemporaryVillagerAlive = false;
 
     public static boolean doRespawnTemporaryVillager = false;
 
     public static void spawnTemporaryVillager(){
+        if (!doRespawnTemporaryVillager) { return; }
+
         if (Bukkit.getOnlinePlayers().isEmpty()) {
             return;
         }
+
+        Bukkit.getLogger().info("Trying to spawn temporary villager");
+        if (isTemporaryVillagerAlive) {
+            return;
+        }
+
         Player player = (Player) Bukkit.getOnlinePlayers().toArray()[new Random().nextInt(Bukkit.getOnlinePlayers().size())];
 
-        if (temporaryVillager == null || temporaryVillager.isDead()) {
-            if (!doRespawnTemporaryVillager) { return; }
-            Location location = player.getRespawnLocation();
-            temporaryVillager = createHealer(location.getWorld(), location, 1, true, 1000);
-        }
+        Location location = player.getRespawnLocation();
+        Bukkit.getLogger().info("Temporary villager spawned at " + location.toString());
+        createHealer(location.getWorld(), location, 1, true, 1000);
+
+        isTemporaryVillagerAlive = true;
     }
 
     public static Villager getMainVillager(){

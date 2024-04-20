@@ -149,14 +149,15 @@ public class ListInfected implements Serializable {
         }
         infectedPlayer.stage++;
         infectedPlayer.duration = 0;
+        Bukkit.getLogger().info(String.format("[STAGE] %s: %d", infectedPlayer.nickname, infectedPlayer.stage));
     }
 
     private void updateDuration(InfectedPlayer infectedPlayer) {
         infectedPlayer.duration++;
 
-        apply(infectedPlayer);
         if (infectedPlayer.duration >= durationToChangeStage) {
             nextStage(infectedPlayer);
+            apply(infectedPlayer);
         }
     }
 
