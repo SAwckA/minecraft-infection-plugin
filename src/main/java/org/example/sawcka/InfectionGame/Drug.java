@@ -15,7 +15,7 @@ public class Drug {
     private static final String name = "Лекарство)";
     private static final String description = "Лекарство от чумы)";
     private static final PotionEffectType effectType = PotionEffectType.LUCK;
-    private static final int duration = 15 * 20 * 60;
+    private static final int duration = 10*20;//15 * 20 * 60;
     public static final NamespacedKey key = NamespacedKey.fromString("drug");
     public static final PersistentDataType<Byte, Boolean> keyType = PersistentDataType.BOOLEAN;
     public static final boolean keyDefaultValue = true;

@@ -89,6 +89,7 @@ public final class InfectionGame extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new HealerDespawnEvent(), this);
         Bukkit.getPluginManager().registerEvents(new HealerAcquireEvent(), this);
         Bukkit.getPluginManager().registerEvents(new TemporaryVillagerDieEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new PotionEffectEvent(), this);
         Bukkit.getLogger().info("Enabled");
 
         Server server = Bukkit.getServer();
