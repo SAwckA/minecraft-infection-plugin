@@ -108,8 +108,11 @@ public class ListInfected implements Serializable {
     }
 
     private void apply(InfectedPlayer infectedPlayer) {
-        int stage = infectedPlayer.stage;
         Player player = Bukkit.getPlayer(infectedPlayer.nickname);
+
+        if (player.getPotionEffect(PotionEffectType.LUCK) != null) return;
+
+        int stage = infectedPlayer.stage;
 
         clearEffects(infectedPlayer);
 
