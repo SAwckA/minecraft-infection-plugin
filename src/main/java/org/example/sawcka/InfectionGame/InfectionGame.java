@@ -19,6 +19,16 @@ public final class InfectionGame extends JavaPlugin {
     public void onEnable() {
 
         Bukkit.getLogger().info("Starting");
+        //Setup config
+
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        Settings.setup();
+        Settings.get().options().copyDefaults(true);
+        Settings.save();
+
+        Bukkit.getLogger().info((String) Settings.get().get("healer.name"));
 
         getCommand("test").setExecutor(new TestCommand());
 
@@ -100,7 +110,7 @@ public final class InfectionGame extends JavaPlugin {
 
         BukkitTask task = server.getScheduler().runTaskTimer(this, infection::update, delay, period);
         BukkitTask updateDurationTask = server.getScheduler().runTaskTimer(this, listInfected::updateAllDuration, delay, 20);
-        BukkitTask spawnHealerOnSpawn = server.getScheduler().runTaskTimer(this, Healer::spawnTemporaryVillager, delay, 10 * 20);
+        BukkitTask spawnHealerOnSpawn = server.getScheduler().runTaskTimer(this, Healer::spawnTemporaryVillager, delay, Settings.get().getInt("healer.spawnCooldown"));
     }
 
     @Override

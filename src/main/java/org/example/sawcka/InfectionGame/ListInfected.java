@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class ListInfected implements Serializable {
 
-    public static int durationToChangeStage = 60 * 60 * 2;
-    private static final double chanceToInfect = 0.25;
-    private static final double sneezeChance = 0.01;
+    public static int durationToChangeStage = Settings.get().getInt("infection.durationToChangeStage");
+    private static final double chanceToInfect = Settings.get().getDouble("infection.chanceToInfect");
+    private static final double sneezeChance = Settings.get().getDouble("infection.sneezeChance");
 
     public static class InfectedPlayer implements Serializable {
         public int duration;

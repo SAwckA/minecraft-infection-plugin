@@ -15,9 +15,9 @@ import java.util.Random;
 
 public class Healer {
     private static final Villager.Profession PROFESSION = Villager.Profession.CLERIC;
-    private static final String NAME = "Целитель";
+    private static final String NAME = Settings.get().getString("healer.name");
     private static final Material ingredientMaterial = Material.DIAMOND;
-    private static final int ingredientAmount = 4;
+    private static final int ingredientAmount = Settings.get().getInt("healer.priceAmount");
     private static Villager mainVillager = null;
     public static boolean isTemporaryVillagerAlive = false;
 

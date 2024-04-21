@@ -1,0 +1,15 @@
+healer:
+  name: Целитель
+  priceAmount: 4
+  spawnCooldown: 12000
+
+drug:
+  name: Лекарство)
+  description: Лекарство от чумы)
+  duration: 18000
+
+infection:
+  radius: 6
+  durationToChangeStage: 7200
+  chanceToInfect: 0.25
+  sneezeChance: 0.01
