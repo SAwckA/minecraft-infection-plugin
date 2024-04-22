@@ -2,6 +2,7 @@ package org.example.sawcka.InfectionGame;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 import org.example.sawcka.InfectionGame.commands.*;

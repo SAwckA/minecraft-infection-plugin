@@ -1,5 +1,6 @@
 package org.example.sawcka.InfectionGame;
 
+import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,6 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPortalEnterEvent;
 import org.bukkit.World;
+import org.bukkit.event.player.PlayerTeleportEvent;
+
 import java.util.List;
 
 public class PortalBlackout implements CommandExecutor, TabCompleter, Listener {
@@ -37,11 +40,19 @@ public class PortalBlackout implements CommandExecutor, TabCompleter, Listener {
             block.breakNaturally();
 
         } catch (Exception ignored) {
-
         }
-
-
     }
+
+
+    @EventHandler
+    public void onPlayerTeleportEvent(PlayerTeleportEvent event) {
+        if (!isActive) {
+            return;
+        }
+        event.setCancelled(true);
+    }
+
+
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
