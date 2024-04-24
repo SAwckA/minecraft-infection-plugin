@@ -17,6 +17,7 @@
   </properties>
 
   <build>
+    <finalName>InfectionGame</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -43,6 +44,7 @@
                           <mainClass>com.test.Main</mainClass>
                       </transformer>
                   </transformers>
+                  <outputFile>${dir}/${project.artifactId}.jar</outputFile>
                   <filters>
                       <filter>
                           <artifact>*:*</artifact>
